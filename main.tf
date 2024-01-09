@@ -63,10 +63,12 @@ resource "google_compute_target_https_proxy" "this" {
 ##############################################################################
 
 resource "google_compute_global_address" "this" {
+  provider     = google-beta
   name         = local.global_address_name
   description  = var.description
   ip_version   = var.ip_version
   address_type = var.address_type
+  labels       = var.labels
   project      = var.project
 }
 
@@ -75,13 +77,16 @@ resource "google_compute_global_address" "this" {
 ##############################################################################
 
 resource "google_compute_global_forwarding_rule" "this" {
-  name        = local.forwarding_rule_name
-  description = var.description
-  target      = google_compute_target_https_proxy.this.self_link
-  ip_address  = google_compute_global_address.this.address
-  ip_protocol = var.ip_protocol
-  port_range  = var.port_range
-  project     = var.project
+  provider              = google-beta
+  name                  = local.forwarding_rule_name
+  description           = var.description
+  target                = google_compute_target_https_proxy.this.self_link
+  ip_address            = google_compute_global_address.this.address
+  ip_protocol           = var.ip_protocol
+  load_balancing_scheme = "EXTERNAL"
+  port_range            = var.port_range
+  labels                = var.labels
+  project               = var.project
 }
 
 ##############################################################################

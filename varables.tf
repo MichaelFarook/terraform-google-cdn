@@ -9,6 +9,12 @@ variable "prefix" {
   default     = "cdn"
 }
 
+variable "labels" {
+  description = "The lables to attach to the resources"
+  type        = map(string)
+  default     = {}
+}
+
 variable "bucket_name" {
   description = "The name of the bucket that will be the backend for our CDN"
   type        = string
