@@ -39,7 +39,6 @@ resource "google_compute_managed_ssl_certificate" "this" {
   name        = local.managed_ssl_name
   description = var.description
   project     = var.project
-  provider    = google-beta
 
   managed {
     domains = [local.dns_name]
@@ -63,7 +62,6 @@ resource "google_compute_target_https_proxy" "this" {
 ##############################################################################
 
 resource "google_compute_global_address" "this" {
-  provider     = google-beta
   name         = local.global_address_name
   description  = var.description
   ip_version   = var.ip_version
@@ -77,7 +75,6 @@ resource "google_compute_global_address" "this" {
 ##############################################################################
 
 resource "google_compute_global_forwarding_rule" "this" {
-  provider              = google-beta
   name                  = local.forwarding_rule_name
   description           = var.description
   target                = google_compute_target_https_proxy.this.self_link

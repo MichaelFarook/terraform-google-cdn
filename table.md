@@ -1,35 +1,3 @@
-# Google Cloud CDN Terraform module
-
-The 'terraform-google-cdn' module simplifies the deployment and management of a Content Delivery Network (CDN) on Goolge Cloud. This module allows you to accelerate content delivery, enhance user experience and improve the performance of your web applications by leveraging Google's global network infrastructure.
-
-## Usage
-
-```hcl
-module "cdn" {
-  source = "github.com/MichaelFarook/terraform-google-cdn"
-
-  bucket_name = "example-bucket"
-  description = "CDN module"
-  project     = "you-project"
-  domain      = "example.com"
-
-  # Conditional creation
-  create_dns_record = true
-  dns_cdn_domain    = "cdn-domain"
-  dns_managed_zone  = "example-zone"
-
-  labels = {
-    terraform = true
-    devops    = true
-  }
-}
-```
-## Examples
-
-- [Basic CDN creation](https://github.com/MichaelFarook/terraform-google-cdn/tree/main/examples/basic)
-- [Complete CDN creation](https://github.com/MichaelFarook/terraform-google-cdn/tree/main/examples/complete)
-
-<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
@@ -84,13 +52,3 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_external_ip"></a> [external\_ip](#output\_external\_ip) | The external global address |
-<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-
-## Authors
-
-Module is maintained by [Michael Nakhtigal](https://github.com/MichaelFarook). 
-
-## License
-
-Apache 2 Licensed. See [LICENSE](https://github.com/MichaelFarook/terraform-google-cdn/blob/main/LICENSE) for full details.
-

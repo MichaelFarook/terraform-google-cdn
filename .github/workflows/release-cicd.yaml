@@ -61,16 +61,31 @@ jobs:
       run: |
         echo "The next tag version will be: ${{ steps.taggerFinal.outputs.new_tag }}"
 
-  generate_git_release:
-    needs: generate_git_tags
-    name: GitHub Release
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Release Action
-        uses: ncipollo/release-action@v1.10.0
-        with:
-          tag: ${{ needs.generate_git_tags.outputs.output_new_tag }}
-          token: ${{ secrets.GITOPS_KEY }}
+#  generate_git_release:
+#    needs: generate_git_tags
+#    name: GitHub Release
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#
+#      - name: Release Action
+#        uses: ncipollo/release-action@v1.10.0
+#        with:
+#          tag: ${{ needs.generate_git_tags.outputs.output_new_tag }}
+#          token: ${{ secrets.GITOPS_KEY }}
+#  send_slack_message:
+#    name: Send Slack Message
+#    needs: [generate_git_release]
+#    if: always()
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Slack Notification
+#      uses: rtCamp/action-slack-notifiy@v2
+#      env:
+#        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK_URL }}
+#        SLACK_USERNAME: WorkflowBot
+#        SLACK_COLOR: ${{ job.status }}
+#        SLACK_TITLE: Message
+#        SLACK_MESSAGE: "Release of Terraform module was ${{ job.status }}"
+#      if: always()
