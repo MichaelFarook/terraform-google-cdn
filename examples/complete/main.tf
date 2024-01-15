@@ -39,6 +39,5 @@ module "cdn" {
   labels = {
     terraform = true
     environment = development
-    devops      = true
  }
 }
