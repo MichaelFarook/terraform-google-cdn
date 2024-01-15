@@ -1,4 +1,4 @@
-local {
+locals {
   project_id = "my-project-id"
 }
 
