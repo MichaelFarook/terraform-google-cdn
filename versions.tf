@@ -6,7 +6,7 @@ terraform {
       version = ">= 4.84.0, < 6"
     }
     google-beta = {
-      source = "hashicorp/google-beta"
+      source  = "hashicorp/google-beta"
       version = ">= 4.84.0, < 6"
     }
   }
