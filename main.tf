@@ -90,7 +90,7 @@ resource "google_compute_global_forwarding_rule" "this" {
 }
 
 ##############################################################################
-# create a dns record 
+# CREATE A DNS RECORD
 ##############################################################################
 
 resource "google_dns_record_set" "this" {
