@@ -1,6 +1,7 @@
 # CDN Complete example
 
 This example shows how to create the CDN for website stored in cloud storage bucket using the Terraform module.
+In this module we use the single source of website stored in bucket, and multiple CDN's that are linked to this storage.
 
 ## Run Terraform
 
